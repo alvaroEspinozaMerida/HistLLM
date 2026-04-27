@@ -73,4 +73,26 @@ The Q&A pairs are designed to cover key historical events, figures, and concepts
 This dataset consists of high-quality question and answer pairs generated from the content of "World History Since 1500: An Open and Free Textbook". The Q&A pairs are designed to cover key historical events, figures, and concepts from 1500 to the present day, providing a comprehensive resource for students, educators, and history enthusiasts.
 
 
+## Model Finetuning Structure: 
 
+| Experiment            | What it is                   | What changes                     |
+| --------------------- | ---------------------------- | -------------------------------- |
+| **A: Baseline**       | No training                  | Pure base model                  |
+| **B: Mixed SFT**      | 1 LoRA adapter               | Trained on all datasets together |
+| **C: Curriculum SFT** | 1 LoRA adapter (multi-stage) | Sequential training              |
+| **D: QA-only SFT**    | 1 LoRA adapter               | Trained only on QA               |
+
+
+
+## Training variable:
+1. Base model
+2. Mixed SFT LoRA
+3. Curriculum LoRA
+4. QA-only LoRA
+
+## Hardware variable:
+1. Raspberry Pi 16GB CPU-only
+2. Raspberry Pi + Hailo-10H
+3. A1000 GPU
+4. RTX 4070 GPU
+5. MacBook M2 Pro / M4 Pro

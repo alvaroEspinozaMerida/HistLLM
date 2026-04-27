@@ -53,7 +53,6 @@ create_tables_sql = [
         id BIGINT PRIMARY KEY,
         question TEXT NOT NULL,
         answer TEXT NOT NULL,
-        dataset_name TEXT NOT NULL,
         time_period TEXT NOT NULL
     );
     """
@@ -61,7 +60,8 @@ create_tables_sql = [
 drop_tables_sql = [
     "DROP TABLE IF EXISTS biographies;",
     "DROP TABLE IF EXISTS historical_events;",
-    "DROP TABLE IF EXISTS historical_figures;"
+    "DROP TABLE IF EXISTS historical_figures;",
+    "DROP TABLE IF EXISTS qa_pairs;"
 ]
 DATABASE_URL = os.getenv("DATABASE_URL")
 
@@ -206,9 +206,13 @@ def validate_data_types(engine, table_name, df):
             "db_schema": db_schema,
             "df_schema": df_schema
         }
-def add_data_to_table(engine, table_name, data_source):
+def add_data_to_table(engine, table_name, data_source ,is_df = False):
 
-    df = pd.read_csv(data_source)
+    if is_df:
+        df = data_source
+    else:
+        df = pd.read_csv(data_source)
+
     if not validate_column_names(engine, table_name, df):
         print("❌ Column mismatch detected")
         return
@@ -226,19 +230,29 @@ def preview_table(engine, table_name, limit=10):
 def main():
     # only need to create once
     engine = create_engine(DATABASE_URL)
+    check_connection()
+
+    df_qa1 = pd.read_json("data/qa1_clean.jsonl", lines=True)
+    df_qa2 = pd.read_json("data/qa2_clean.jsonl", lines=True)
+
+    # Get max id from QA1
+    max_id = df_qa1["id"].max()
+
+    # Shift QA2 ids
+    df_qa2["id"] = range(max_id + 1, max_id + 1 + len(df_qa2))
+
+    # Combine
+    df_qa = pd.concat([df_qa1, df_qa2], ignore_index=True)
+
+    add_data_to_table(engine, "qa_pairs", df_qa, is_df = True)
 
     # run_sql_list(engine, create_tables_sql)
     #for some reason the drop table is not working
     #just drop from the online interface/ if needed
 
-    # run_sql(engine, drop_tables_sql[0])
-    add_data_to_table(engine, "biographies", "data/biographies.csv")
-
+    # run_sql(engine, drop_tables_sql[3])
 
     # add_data_to_table(engine, "historical_figures", "data/historical_figures.csv")
     # add_data_to_table(engine, "historical_events", "data/historical_events_core.csv")
-
-
-
 
 main()
