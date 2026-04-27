@@ -36,9 +36,41 @@ https://apxml.com/courses/how-to-build-a-large-language-model/chapter-9-data-sam
 https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/raft-a-new-way-to-teach-llms-to-be-better-at-rag/4084674
 https://www.youtube.com/watch?v=rqyczEvh3D4&time_continue=341&source_ve_path=NzY3NTg&embeds_referring_euri=https%3A%2F%2Fwww.google.com%2F
  
-### Datasets Trained on: 
+# Datasets Trained on: 
+
+# Dataset 1 : World Important Events - Ancient to Modern
+## Link: https://www.kaggle.com/datasets/saketk511/world-important-events-ancient-to-modern
+### Description:
+This dataset, "World Important Events - Ancient to Modern," spans significant historical milestones from ancient
+times to the modern era, covering diverse global incidents. It provides a comprehensive timeline of events that
+have shaped the world, offering insights into wars, cultural shifts, technological advancements, and social movements.
 
 
-HiST-LLM (History Seshat Test for LLMs): A dataset derived from the Seshat Global History Databank,
- containing over 36,000 data points across 600+ historical societies and 2,700+ scholarly references.
- It tests for expert-level knowledge from the Neolithic period to the Industrial Revolution.
+
+# Dataset 2 : A Manually Verified Dataset of Globally Famous Biographies
+## Link: https://www.kaggle.com/datasets/saketk511/world-important-events-ancient-to-modern
+### Description:
+We present the Pantheon 1.0 dataset: a manually verified dataset of individuals that have transcended linguistic, 
+temporal, and geographic boundaries. The Pantheon 1.0 dataset includes the 11,341 biographies present in more
+than 25 languages in Wikipedia and is enriched with: (i) manually verified demographic information 
+(place and date of birth, gender) (ii) a taxonomy of occupations classifying each biography at three 
+levels of aggregation and (iii) two measures of global popularity including the number of languages in which
+a biography is present in Wikipedia (L), and the Historical Popularity Index (HPI) a metric that combines 
+information on L, time since birth, and page-views (2008-2013). We compare the Pantheon 1.0 dataset to data from the 2003 book, Human Accomplishments, and also to external measures of accomplishment in individual games and sports: Tennis, Swimming, Car Racing, and Chess. In all of these cases we find that measures of popularity (L and HPI) correlate highly with individual accomplishment, suggesting that measures of global popularity proxy the historical impact of individuals.
+
+
+
+# Dataset 3: World History to 1500: Q&A Dataset
+## Link: https://github.com/provos/world-history-to-1500-qa
+### Description:
+This dataset consists of high-quality question and answer pairs generated from the content of "World History Volume 1: to 1500".
+The Q&A pairs are designed to cover key historical events, figures, and concepts from prehistory to 1500 CE, providing a comprehensive resource for students, educators, and history enthusiasts.
+
+
+# Dataset 4: World History Since 1500: Q&A Dataset
+## Link: https://github.com/provos/world-history-to-1500-qa
+### Description:
+This dataset consists of high-quality question and answer pairs generated from the content of "World History Since 1500: An Open and Free Textbook". The Q&A pairs are designed to cover key historical events, figures, and concepts from 1500 to the present day, providing a comprehensive resource for students, educators, and history enthusiasts.
+
+
+
