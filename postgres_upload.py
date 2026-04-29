@@ -235,10 +235,8 @@ def main():
     df_qa1 = pd.read_json("data/qa1_clean.jsonl", lines=True)
     df_qa2 = pd.read_json("data/qa2_clean.jsonl", lines=True)
 
-    # Get max id from QA1
     max_id = df_qa1["id"].max()
 
-    # Shift QA2 ids
     df_qa2["id"] = range(max_id + 1, max_id + 1 + len(df_qa2))
 
     # Combine
@@ -247,8 +245,6 @@ def main():
     add_data_to_table(engine, "qa_pairs", df_qa, is_df = True)
 
     # run_sql_list(engine, create_tables_sql)
-    #for some reason the drop table is not working
-    #just drop from the online interface/ if needed
 
     # run_sql(engine, drop_tables_sql[3])
 
